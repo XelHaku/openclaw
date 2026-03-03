@@ -143,7 +143,16 @@ async function execSystemctl(
 }
 
 function readSystemctlDetail(result: { stdout: string; stderr: string }): string {
-  return (result.stderr || result.stdout || "").trim();
+  const stdout = result.stdout.trim();
+  const stderr = result.stderr.trim();
+  if (stdout && stderr) {
+    // execFile can surface a generic "Command failed: ..." message in stderr
+    // while systemctl writes the actual state (e.g. "not-found") to stdout.
+    if (stderr.toLowerCase().startsWith("command failed:")) {
+      return stdout;
+    }
+  }
+  return stderr || stdout;
 }
 
 function isSystemctlMissing(detail: string): boolean {

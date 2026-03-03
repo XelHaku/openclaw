@@ -1,6 +1,9 @@
 import { withProgress } from "../cli/progress.js";
 import { loadConfig } from "../config/config.js";
 import { resolveGatewayService } from "../daemon/service.js";
+import { renderSystemdUnavailableHints } from "../daemon/systemd-hints.js";
+import { isSystemdUserServiceAvailable } from "../daemon/systemd.js";
+import { isWSL } from "../infra/wsl.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { note } from "../terminal/note.js";
 import { confirm, select } from "./configure.shared.js";
@@ -19,6 +22,15 @@ export async function maybeInstallDaemon(params: {
   gatewayToken?: string;
   daemonRuntime?: GatewayDaemonRuntime;
 }) {
+  if (process.platform === "linux") {
+    const systemdAvailable = await isSystemdUserServiceAvailable().catch(() => false);
+    if (!systemdAvailable) {
+      const wsl = await isWSL().catch(() => false);
+      note(renderSystemdUnavailableHints({ wsl }).join("\n"), "Gateway");
+      return;
+    }
+  }
+
   const service = resolveGatewayService();
   const loaded = await service.isLoaded({ env: process.env });
   let shouldCheckLinger = false;
