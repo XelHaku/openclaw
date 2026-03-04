@@ -1,0 +1,384 @@
+{
+  "version": 1,
+  "meta": {
+    "description": "Planning sample generated from Salmita usuarios.json (not runtime-enforced)",
+    "source": "/home/xel/git/sages-openclaw/workspace-tulin/salma/salmita/usuarios.json",
+    "generatedBy": "planning-artifact",
+    "channelPriority": ["whatsapp", "telegram"]
+  },
+  "groups": [
+    {
+      "id": "mantenimiento-salma",
+      "displayName": "Mantenimiento Salma",
+      "channels": {
+        "whatsapp": {
+          "groups": ["120363422678028970@g.us"]
+        }
+      }
+    },
+    {
+      "id": "comite-seguridad-vial-salma",
+      "displayName": "Comite-Seguridad-Vial-Salma",
+      "channels": {
+        "whatsapp": {
+          "groups": ["120363424146675684@g.us"]
+        }
+      }
+    }
+  ],
+  "roles": {
+    "owner": {
+      "description": "God mode — acceso total sin restricciones a toda la información y operaciones",
+      "capabilities": {
+        "allow": ["domain:*"],
+        "deny": []
+      }
+    },
+    "director": {
+      "description": "Acceso total a toda la información y operaciones",
+      "capabilities": {
+        "allow": ["domain:*"],
+        "deny": []
+      }
+    },
+    "developer": {
+      "description": "Desarrollo del sistema — acceso a código, datos de unidades para debugging. Sin financieros ni costos",
+      "capabilities": {
+        "allow": [
+          "domain:ver-unidades",
+          "domain:ver-fallas",
+          "domain:ver-reparaciones",
+          "domain:ver-diesel",
+          "domain:ver-status-unidades",
+          "domain:ver-ubicaciones",
+          "domain:registrar-fallas",
+          "domain:registrar-reparaciones",
+          "domain:registrar-diesel",
+          "domain:modificar-registros",
+          "domain:codigo",
+          "domain:git",
+          "domain:skills",
+          "domain:config-sistema"
+        ],
+        "deny": [
+          "domain:ver-costos-mantenimiento",
+          "domain:ver-costos-generales",
+          "domain:ver-reporte-mensual",
+          "domain:ver-costos-por-taller",
+          "domain:ver-costos-por-grupo",
+          "domain:ver-financieros",
+          "domain:ver-nominas",
+          "domain:ver-contratos",
+          "domain:ver-proveedores",
+          "domain:ver-clientes",
+          "domain:ver-embarques",
+          "domain:analisis-mermas",
+          "domain:reportes-trafico",
+          "domain:borrar-registros",
+          "domain:exportar-datos-financieros",
+          "domain:ver-operadores",
+          "domain:ver-kilometraje"
+        ]
+      }
+    },
+    "mantenimiento": {
+      "description": "Operaciones de mantenimiento — fallas, reparaciones, diésel, status. Costos SOLO de mantenimiento, sin financieros generales ni reportes mensuales",
+      "capabilities": {
+        "allow": [
+          "domain:ver-unidades",
+          "domain:ver-fallas",
+          "domain:ver-reparaciones",
+          "domain:ver-diesel",
+          "domain:ver-status-unidades",
+          "domain:ver-costos-mantenimiento",
+          "domain:ver-tiempos-taller",
+          "domain:ver-tiempos-falla",
+          "domain:registrar-fallas",
+          "domain:registrar-reparaciones",
+          "domain:registrar-diesel",
+          "domain:modificar-registros",
+          "domain:salma-list"
+        ],
+        "deny": [
+          "domain:ver-costos-generales",
+          "domain:ver-reporte-mensual",
+          "domain:ver-costos-por-taller",
+          "domain:ver-costos-por-grupo",
+          "domain:ver-financieros",
+          "domain:ver-nominas",
+          "domain:ver-contratos",
+          "domain:ver-proveedores",
+          "domain:ver-clientes",
+          "domain:ver-embarques",
+          "domain:analisis-mermas",
+          "domain:reportes-trafico",
+          "domain:borrar-registros",
+          "domain:exportar-datos-financieros",
+          "domain:ver-operadores",
+          "domain:ver-kilometraje",
+          "domain:ver-ubicaciones",
+          "domain:codigo",
+          "domain:git",
+          "domain:skills",
+          "domain:config-sistema"
+        ]
+      }
+    },
+    "trafico": {
+      "description": "Operación de tráfico — embarques, mermas, rutas. Sin acceso a costos, reparaciones ni registros de mantenimiento",
+      "capabilities": {
+        "allow": [
+          "domain:ver-unidades",
+          "domain:ver-fallas",
+          "domain:ver-diesel",
+          "domain:ver-status-unidades",
+          "domain:ver-embarques",
+          "domain:analisis-mermas",
+          "domain:reportes-trafico",
+          "domain:salma-list"
+        ],
+        "deny": [
+          "domain:ver-reparaciones",
+          "domain:ver-costos-mantenimiento",
+          "domain:ver-costos-generales",
+          "domain:ver-reporte-mensual",
+          "domain:ver-costos-por-taller",
+          "domain:ver-costos-por-grupo",
+          "domain:ver-financieros",
+          "domain:ver-nominas",
+          "domain:ver-contratos",
+          "domain:ver-proveedores",
+          "domain:ver-clientes",
+          "domain:ver-tiempos-taller",
+          "domain:ver-tiempos-falla",
+          "domain:registrar-fallas",
+          "domain:registrar-reparaciones",
+          "domain:registrar-diesel",
+          "domain:modificar-registros",
+          "domain:borrar-registros",
+          "domain:exportar-datos-financieros",
+          "domain:ver-operadores",
+          "domain:ver-kilometraje",
+          "domain:ver-ubicaciones",
+          "domain:codigo",
+          "domain:git",
+          "domain:skills",
+          "domain:config-sistema"
+        ]
+      }
+    },
+    "monitoreo": {
+      "description": "Solo lectura mínima — ver status de unidades y fallas abiertas. NO puede registrar, modificar, ver costos ni detalles técnicos",
+      "capabilities": {
+        "allow": ["domain:ver-unidades", "domain:ver-fallas", "domain:ver-diesel"],
+        "deny": [
+          "domain:ver-reparaciones",
+          "domain:ver-status-unidades",
+          "domain:ver-costos-mantenimiento",
+          "domain:ver-costos-generales",
+          "domain:ver-reporte-mensual",
+          "domain:ver-costos-por-taller",
+          "domain:ver-costos-por-grupo",
+          "domain:ver-financieros",
+          "domain:ver-nominas",
+          "domain:ver-contratos",
+          "domain:ver-proveedores",
+          "domain:ver-clientes",
+          "domain:ver-embarques",
+          "domain:analisis-mermas",
+          "domain:reportes-trafico",
+          "domain:ver-tiempos-taller",
+          "domain:ver-tiempos-falla",
+          "domain:registrar-fallas",
+          "domain:registrar-reparaciones",
+          "domain:registrar-diesel",
+          "domain:modificar-registros",
+          "domain:borrar-registros",
+          "domain:exportar-datos-financieros",
+          "domain:ver-operadores",
+          "domain:ver-kilometraje",
+          "domain:ver-ubicaciones",
+          "domain:salma-list",
+          "domain:codigo",
+          "domain:git",
+          "domain:skills",
+          "domain:config-sistema"
+        ]
+      }
+    },
+    "recursos-humanos": {
+      "description": "Consultas básicas de unidades para seguimiento de personal. Sin acceso técnico, financiero ni operativo",
+      "capabilities": {
+        "allow": ["domain:ver-unidades", "domain:salma-list"],
+        "deny": [
+          "domain:ver-fallas",
+          "domain:ver-reparaciones",
+          "domain:ver-diesel",
+          "domain:ver-status-unidades",
+          "domain:ver-costos-mantenimiento",
+          "domain:ver-costos-generales",
+          "domain:ver-reporte-mensual",
+          "domain:ver-costos-por-taller",
+          "domain:ver-costos-por-grupo",
+          "domain:ver-financieros",
+          "domain:ver-nominas",
+          "domain:ver-contratos",
+          "domain:ver-proveedores",
+          "domain:ver-clientes",
+          "domain:ver-embarques",
+          "domain:analisis-mermas",
+          "domain:reportes-trafico",
+          "domain:ver-tiempos-taller",
+          "domain:ver-tiempos-falla",
+          "domain:registrar-fallas",
+          "domain:registrar-reparaciones",
+          "domain:registrar-diesel",
+          "domain:modificar-registros",
+          "domain:borrar-registros",
+          "domain:exportar-datos-financieros",
+          "domain:ver-operadores",
+          "domain:ver-kilometraje",
+          "domain:ver-ubicaciones",
+          "domain:codigo",
+          "domain:git",
+          "domain:skills",
+          "domain:config-sistema"
+        ]
+      }
+    }
+  },
+  "users": [
+    {
+      "id": "monitoreo",
+      "displayName": "MONITOREO😌",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218112554202"]
+      },
+      "roles": ["monitoreo"],
+      "groupRefs": [],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "aldevaran",
+      "displayName": "Aldevaran",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218116750683"]
+      },
+      "roles": ["mantenimiento", "developer"],
+      "groupRefs": ["mantenimiento-salma"],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "burnes",
+      "displayName": "Burnes",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218281130407"],
+        "telegram": ["6867785856"]
+      },
+      "roles": ["mantenimiento", "developer"],
+      "groupRefs": ["mantenimiento-salma"],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "adrian-zamora",
+      "displayName": "Adrian Zamora",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218282899772"]
+      },
+      "roles": ["trafico"],
+      "groupRefs": [],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "enrique-moreno",
+      "displayName": "Enrique Moreno",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218120015513"]
+      },
+      "roles": ["trafico"],
+      "groupRefs": [],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "nicandro-vela",
+      "displayName": "Nicandro Vela",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218111937243"]
+      },
+      "roles": ["recursos-humanos"],
+      "groupRefs": [],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "esteban-caballero",
+      "displayName": "Esteban Caballero",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218113122030"]
+      },
+      "roles": ["mantenimiento"],
+      "groupRefs": ["mantenimiento-salma"],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "javier-perez-rios",
+      "displayName": "Javier Perez Rios",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218281438360"]
+      },
+      "roles": ["mantenimiento"],
+      "groupRefs": ["mantenimiento-salma"],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "juan",
+      "displayName": "Juan",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218121937470"],
+        "telegram": ["6586915095"]
+      },
+      "roles": ["owner"],
+      "groupRefs": ["mantenimiento-salma"],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    },
+    {
+      "id": "nicandro-vela-8799",
+      "displayName": "Nicandro Vela",
+      "enabled": true,
+      "identities": {
+        "whatsapp": ["+5218135778799"]
+      },
+      "roles": ["recursos-humanos"],
+      "groupRefs": [],
+      "meta": {
+        "source": "salmita/usuarios.json"
+      }
+    }
+  ]
+}
